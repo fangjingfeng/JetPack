@@ -4,16 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.databinding.DataBindingUtil;
 
 /**
  * User: ext.fangjingfeng
@@ -21,26 +15,28 @@ import androidx.databinding.DataBindingUtil;
  * Time: 10:36
  */
 public abstract class BaseActivity extends AppCompatActivity {
-
     protected Activity mActivity;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+        setLayoutId();
         mActivity = this;
 
-        initUI();
+        initUI(savedInstanceState);
         initListener();
         initData();
     }
 
+    protected void setLayoutId(){
+        setContentView(getLayoutId());
+    }
+
     protected abstract int getLayoutId();
 
-    protected abstract void initUI();
+    protected abstract void initUI(Bundle savedInstanceState);
 
-    protected void initListener(){ }
+    protected abstract void initListener();
 
     protected abstract void initData();
 

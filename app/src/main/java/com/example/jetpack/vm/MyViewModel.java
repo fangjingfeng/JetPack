@@ -1,6 +1,8 @@
 package com.example.jetpack.vm;
 
 import android.app.Application;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
@@ -19,5 +21,9 @@ public class MyViewModel extends AndroidViewModel {
 
     public void requstData(){
         data.setValue("123");
+    }
+
+    public void btnTestClike(View view){
+        data.setValue("00000");
     }
 }

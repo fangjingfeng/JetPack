@@ -1,5 +1,6 @@
 package com.example.jetpack.ui;
 
+import android.os.Bundle;
 import android.widget.TextView;
 import com.example.jetpack.R;
 import com.example.jetpack.bean.BaseActivity;
@@ -15,11 +16,23 @@ public class JniActivity extends BaseActivity {
         return R.layout.activity_jni;
     }
 
+
     @Override
-    protected void initUI() {
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        System.out.println("setContentView~~~~~~~~~~~~~");
+    }
+
+    @Override
+    protected void initUI(Bundle savedInstanceState) {
         setToolBar(findViewById(R.id.toolbar),"JNI");
         TextView tv = findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
+    }
+
+    @Override
+    protected void initListener() {
+
     }
 
     @Override

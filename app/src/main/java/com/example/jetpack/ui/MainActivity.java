@@ -1,5 +1,6 @@
 package com.example.jetpack.ui;
 
+import android.os.Bundle;
 import android.view.View;
 import com.example.jetpack.R;
 import com.example.jetpack.bean.BaseActivity;
@@ -12,8 +13,15 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initUI() {
+    protected void initUI(Bundle savedInstanceState) {
         setToolBar(findViewById(R.id.toolbar),"主页",false);
+    }
+
+
+
+    @Override
+    protected void initListener() {
+
     }
 
     @Override
