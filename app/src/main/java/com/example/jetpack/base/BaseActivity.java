@@ -1,4 +1,4 @@
-package com.example.jetpack.bean;
+package com.example.jetpack.base;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -51,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         TextView titleView = (TextView) toolbar.getChildAt(0);
         if(titleView!=null){
             Toolbar.LayoutParams params = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.MATCH_PARENT);
-            params.gravity = Gravity.CENTER;
+            params.gravity = Gravity.CENTER_HORIZONTAL;
             titleView.setLayoutParams(params);
         }
 

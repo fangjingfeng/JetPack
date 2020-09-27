@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoAppTheme">
-        <activity android:name=".ui.MvvmActivity"></activity>
+        <activity android:name=".ui.TabFragmentActivity"></activity>
+        <activity android:name=".ui.MvvmActivity" />
         <activity android:name=".ui.JniActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>

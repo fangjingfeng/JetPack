@@ -3,7 +3,7 @@ package com.example.jetpack.ui;
 import android.os.Bundle;
 import android.view.View;
 import com.example.jetpack.R;
-import com.example.jetpack.bean.BaseActivity;
+import com.example.jetpack.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -16,8 +16,6 @@ public class MainActivity extends BaseActivity {
     protected void initUI(Bundle savedInstanceState) {
         setToolBar(findViewById(R.id.toolbar),"主页",false);
     }
-
-
 
     @Override
     protected void initListener() {
@@ -36,6 +34,9 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_mvvm:
                 //ToastUtils.show("dsfdsfsdf");
                 startActivity(MvvmActivity.class);
+                break;
+            case R.id.btn_tab:
+                startActivity(TabFragmentActivity.class);
                 break;
         }
     }

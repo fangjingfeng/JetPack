@@ -23,4 +23,11 @@
         android:text="MVVM"
         android:onClick="onClick"/>
 
+    <Button
+        android:id="@+id/btn_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tab-Fragment"
+        android:onClick="onClick"/>
+
 </LinearLayout>

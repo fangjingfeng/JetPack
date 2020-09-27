@@ -3,7 +3,7 @@ package com.example.jetpack.ui;
 import android.os.Bundle;
 import android.widget.TextView;
 import com.example.jetpack.R;
-import com.example.jetpack.bean.BaseActivity;
+import com.example.jetpack.base.BaseActivity;
 
 public class JniActivity extends BaseActivity {
 
