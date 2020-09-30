@@ -1,13 +1,13 @@
 package com.example.jetpack.app;
 
-import android.app.Application;
+import androidx.multidex.MultiDexApplication;
 
 /**
  * User: ext.fangjingfeng
  * Date: 2020/9/18
  * Time: 10:25
  */
-public class App extends Application {
+public class App extends MultiDexApplication {
 
     private static App mAplication;
 

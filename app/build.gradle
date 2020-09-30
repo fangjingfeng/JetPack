@@ -1,15 +1,17 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'channel'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.example.jetpack"
         minSdkVersion 18
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
@@ -20,12 +22,41 @@ android {
         dataBinding {
             enabled = true
         }
+        
+
+    }
+
+    signingConfigs {
+        release {
+            v1SigningEnabled true
+            v2SigningEnabled false
+            storeFile file('D:\\AndroidProjects\\Demo\\jetpack\\jks\\fangjingfeng.jks')
+            storePassword 'Fang1215'
+            keyAlias '123'
+            keyPassword 'Fang1215'
+        }
+
+        debug {
+            v1SigningEnabled true
+            v2SigningEnabled false
+            storeFile file('D:\\AndroidProjects\\Demo\\jetpack\\jks\\fangjingfeng.jks')
+            storePassword 'Fang1215'
+            keyAlias '123'
+            keyPassword 'Fang1215'
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     externalNativeBuild {
@@ -39,6 +70,41 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    lintOptions {
+        //所有正式版构建执行规则生成崩溃的lint检查，如果有崩溃问题将停止构建
+        checkReleaseBuilds true
+        // 如果为 true，则当lint发现错误时停止 gradle构建
+        abortOnError false
+    }
+    ndkVersion '21.3.6528147'
+
+    flavorDimensions "mark" //相当于一个标记
+    productFlavors {
+        brain { dimension "mark" }
+        uc { dimension "mark" }
+        yingyongbao { dimension "mark" }
+        xiaomi { dimension "mark" }
+        "360m" { dimension "mark" }
+        oppo { dimension "mark" }
+
+        huawei { dimension "mark" }
+        meizu { dimension "mark" }
+        vivo { dimension "mark" }
+        sougou { dimension "mark" }
+        lianxiang { dimension "mark" }
+        zongbao { dimension "mark" }
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [ATMAN_CHANNEL_VALUE: name]
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            // abc_渠道名_版本名.apk  还可以拼接其他app内容：variant.versionCode  variant.buildType.name
+            outputFileName = "Jetpack_${variant.name}_${variant.versionName}_${new Date().format("yyyy-MM-dd")}.apk"
+        }
+    }
 }
 
 dependencies {
@@ -46,9 +112,25 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.google.android.material:material:1.3.0-alpha02'
+    implementation 'androidx.multidex:multidex:2.0.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-
+//    api 'com.leon.channel:helper:2.0.3'
 }
+
+//channel{
+//    //指定渠道文件
+//    channelFile = file("D:/AndroidProjects/Demo/jetpack/app/vasdolly/testChannel.txt")
+//    //多渠道包的输出目录，默认为new File(project.buildDir,"channel")
+//    baseOutputDir = new File(project.buildDir,"xxx")
+//    //多渠道包的命名规则，默认为：${appName}-${versionName}-${versionCode}-${flavorName}-${buildType}
+//    apkNameFormat ='${appName}-${versionName}-${versionCode}-${flavorName}-${buildType}'
+//    //快速模式：生成渠道包时不进行校验（速度可以提升10倍以上，默认为false）
+//    isFastMode = false
+//    //buildTime的时间格式，默认格式：yyyyMMdd-HHmmss
+//    buildTimeDateFormat = 'yyyyMMdd-HH:mm:ss'
+//    //低内存模式（仅针对V2签名，默认为false）：只把签名块、中央目录和EOCD读取到内存，不把最大头的内容块读取到内存，在手机上合成APK时，可以使用该模式
+//    lowMemory = false
+//}

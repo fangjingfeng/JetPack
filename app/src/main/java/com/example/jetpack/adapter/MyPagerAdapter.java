@@ -1,6 +1,7 @@
 package com.example.jetpack.adapter;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -32,5 +33,11 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return fragmentList==null?0:fragmentList.size();
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return super.getPageTitle(position);
     }
 }

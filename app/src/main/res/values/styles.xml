@@ -1,12 +1,24 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="NoAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!--        <item name="android:windowBackground">@null</item>-->
+                <item name="android:windowDisablePreview">false</item>
+<!--        <item name="android:windowAnimationStyle">@style/fade</item>-->
     </style>
+
+    <style name="fade" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/translate_out</item>
+        <item name="android:activityOpenExitAnimation">@anim/translate_in</item>
+        <item name="android:activityCloseEnterAnimation">@anim/translate_out</item>
+        <item name="android:activityCloseExitAnimation">@anim/translate_in</item>
+    </style>
+
+<!--        <item name="android:windowBackground">@null</item>-->
+<!--        <item name="android:windowDisablePreview">true</item>-->
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>

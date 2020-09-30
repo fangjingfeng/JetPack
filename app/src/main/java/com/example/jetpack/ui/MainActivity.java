@@ -2,6 +2,7 @@ package com.example.jetpack.ui;
 
 import android.os.Bundle;
 import android.view.View;
+import com.example.jetpack.BuildConfig;
 import com.example.jetpack.R;
 import com.example.jetpack.base.BaseActivity;
 
@@ -14,7 +15,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initUI(Bundle savedInstanceState) {
-        setToolBar(findViewById(R.id.toolbar),"主页",false);
+        setToolBar(findViewById(R.id.toolbar),"主页"+ BuildConfig.BUILD_TYPE,false);
     }
 
     @Override
@@ -28,6 +29,9 @@ public class MainActivity extends BaseActivity {
 
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.btn_autograph:
+                startActivity(SigningActivity.class);
+                break;
             case R.id.btn_jni:
                 startActivity(JniActivity.class);
                 break;

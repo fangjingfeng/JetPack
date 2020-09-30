@@ -5,9 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <include layout="@layout/view_toolbar" />
+
+    <Button
+        android:id="@+id/btn_autograph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="签名"
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/btn_jni"
@@ -29,5 +37,7 @@
         android:layout_height="wrap_content"
         android:text="Tab-Fragment"
         android:onClick="onClick"/>
+
+
 
 </LinearLayout>
